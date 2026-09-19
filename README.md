@@ -1,29 +1,19 @@
-# Focus — Explain It At My Level
+Focus — Explain It At My Level
 
-**Problem:** Confusing text (research papers, legal clauses, error messages, dense
-news articles) is often technically "explained" somewhere online — but at the
-wrong level for the reader. A beginner gets jargon; an expert gets condescension.
+I built this because I kept running into the same problem: explanations exist for almost anything online, but they're rarely at my level. Either I'm drowning in jargon, or I'm being talked down to. So this tool asks you upfront how much you already know, then explains accordingly.
 
-**Solution:** Paste any confusing text, pick how much you already know
-(5-year-old / high schooler / college student / adjacent professional), and get
-an explanation tailored to exactly that level — powered by Claude.
+How it works: paste in whatever's confusing you — a paragraph from a paper, a legal clause, an error message — pick a level from "explain it like I'm 5" to "I work in an adjacent field," and it generates an explanation tuned to that.
 
-## How it works
-
-1. You paste text into the box and choose a level.
-2. The Flask backend sends your text to the Gemini API with a system prompt
-   that adapts vocabulary, analogies, and technical depth to the chosen level.
-3. The explanation comes back and renders in a clean reveal panel.
-
-## Tech stack
-
-- **Backend:** Python, Flask, Google Gen AI SDK (Interactions API)
-- **Frontend:** vanilla HTML/CSS/JS (no build step, no framework — fast to run anywhere)
-- **AI:** Google Gemini (`gemini-3.6-flash`) — free tier, no credit card required
-
-## Setup
-
-```bash
+Under the hood
+You paste text and pick a level.
+The Flask backend sends it to the Gemini API with a system prompt that adjusts vocabulary, analogies, and technical depth based on your choice.
+The explanation renders back in the panel below.
+Built with
+Python + Flask on the backend
+Plain HTML/CSS/JS on the frontend — no framework, nothing to build
+Google Gemini (gemini-3.6-flash) for the actual explaining — free tier, no card needed
+Setup
+bash
 # 1. Clone the repo and enter it
 git clone <your-repo-url>
 cd explain-my-level
@@ -41,15 +31,12 @@ cp .env.example .env
 
 # 5. Run it
 python app.py
-```
 
-Open **http://127.0.0.1:5000** in your browser.
+Open http://127.0.0.1:5000 in your browser.
 
-## Project structure
-
-```
+Project structure
 explain-my-level/
-├── app.py                  # Flask backend + Claude API call
+├── app.py                  # Flask backend + Gemini API call
 ├── templates/
 │   └── index.html          # Main page
 ├── static/
@@ -58,16 +45,10 @@ explain-my-level/
 ├── requirements.txt
 ├── .env.example
 └── README.md
-```
+What I'd add next
 
-## Future potential
+If I had more than 24 hours: PDF/file upload instead of paste-only, a browser extension so you can highlight text on any page and get it explained without switching tabs, and a side-by-side before/after view so you can see the original next to the explanation.
 
-- Support file/PDF uploads instead of paste-only
-- Save explanation history per user
-- Browser extension: highlight text on any page → right-click → "Focus"
-- Side-by-side "before/after" comparison view
-- Multi-language explanations
+Note
 
-## Built for
-
-24-hour open-innovation hackathon — built solo.
+Built solo for a 24-hour open-innovation hackathon.
