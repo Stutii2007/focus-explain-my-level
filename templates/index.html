@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Focus — explain it at my level</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="lens" id="lens" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="kicker">a small tool for confusing text</p>
+    <h1>Bring it into<br>focus.</h1>
+    <p class="lede">
+      Paste anything you don't quite understand — a paragraph from a paper,
+      an error message, a clause in a contract, a dense news story. Choose how
+      much you already know. Get an explanation that actually meets you there.
+    </p>
+  </div>
+</header>
+
+<main class="tool">
+  <section class="input-panel">
+    <label for="source-text" class="field-label">What's confusing you?</label>
+    <textarea
+      id="source-text"
+      placeholder="Paste a paragraph, a term, an error, a clause — anything."
+      maxlength="6000"
+    ></textarea>
+    <div class="char-count"><span id="char-count">0</span> / 6000</div>
+
+    <div class="level-picker" role="radiogroup" aria-label="Explain it like I'm...">
+      <span class="field-label">Explain it like I'm...</span>
+      <div class="level-options">
+        <button type="button" class="level-btn" data-level="five">5</button>
+        <button type="button" class="level-btn" data-level="teen">in high school</button>
+        <button type="button" class="level-btn active" data-level="college">in college</button>
+        <button type="button" class="level-btn" data-level="expert">a pro nearby</button>
+      </div>
+    </div>
+
+    <button type="button" id="explain-btn" class="explain-btn">
+      <span id="btn-label">Bring into focus</span>
+    </button>
+    <p class="error-text" id="error-text" hidden></p>
+  </section>
+
+  <section class="output-panel" id="output-panel" hidden>
+    <p class="field-label">Here's the focused version</p>
+    <div class="output-text" id="output-text"></div>
+    <button type="button" class="reset-btn" id="reset-btn">Explain something else</button>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>Built for a 24-hour hackathon · powered by Claude</p>
+</footer>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
